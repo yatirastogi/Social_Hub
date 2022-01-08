@@ -20,7 +20,7 @@ console.log(req.form)
 
 
 
-//get user
+//get user profile
 router.get("/:username", async (req, res) => {
   try{
       const user = await User.findOne({username:req.params.username});
@@ -32,6 +32,30 @@ router.get("/:username", async (req, res) => {
       else{
         res.json("No match")
       }
+    }catch (err) {
+      res.json("no");
+    }
+   
+  });
+
+
+
+  //search user
+router.get("/search/:username", async (req, res) => {
+  try{
+
+    const user = await User.find( { username: { $regex: req.params.username} })
+    res.json(user);
+    // for(const val of user) {
+    //   if(val){
+    //     //console.log(user)
+    //    const { _id,password, updatedAt, ...other } = val._doc;//to get all properties except updated at and password
+    //    console.log(other);
+    //     }
+  //}
+      //const user = await User.find({username:req.params.username});
+     
+     
     }catch (err) {
       res.json("no");
     }
