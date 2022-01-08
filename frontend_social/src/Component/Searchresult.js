@@ -11,7 +11,7 @@ import { render } from '@testing-library/react';
 
 function Searchresult(props) {
 
-console.log("eee")
+//console.log("eee")
     useEffect(()=>{
       //  e.preventDefault()
 
@@ -20,16 +20,22 @@ console.log("eee")
 
     if(username)
 {
-    axios.get(`/user/`+username)
+    axios.get(`/user/search/`+username)
     .then(res => {
-        const item=res.data;
-     console.log(item);
-     if(item!=undefined || item!=null){
+        const items=res.data;
+     console.log(items);
+     items.map((item)=>{
+
+        if(item!=undefined && item!=null){
       
-    render( <Searchdisplay email={item['email']}  username={ item['username']} followers={item['followers']} following={item['following']} coverpic={item['coverpic']} profilepic={item['profilepic']}/>)
+            render( <Searchdisplay email={item['email']}  username={ item['username']} followers={item['followers']} following={item['following']} coverpic={item['coverpic']} profilepic={item['profilepic']}/>)
+        
+        
+             }
 
-
-     }
+     })
+    
+     
      })
 
 }
@@ -51,3 +57,11 @@ console.log("eee")
 }
 export default Searchresult
 
+// if(user){
+//     //console.log(user)
+//    const { _id,password, updatedAt, ...other } = user._doc;//to get all properties except updated at and password
+//     res.json(other);
+//     }
+//     else{
+//       res.json("No match")
+//     }

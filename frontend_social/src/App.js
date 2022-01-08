@@ -17,6 +17,7 @@ import Profile from './pages/Profile/Profile';
 import Searchresult from './Component/Searchresult';
 import ChangeCover from "./pages/Profile/ChangeCover"
 import ChangeProfile from './pages/Profile/ChangeProfile';
+
 //const { user } = useContext(AuthContext);
 
 
@@ -26,7 +27,7 @@ function App() {
   if(state.username){localStorage.setItem('Name', state.username);}
   const name=localStorage.getItem('Name')
   console.log(name)
-  return (
+  return (<>
     <BrowserRouter>
   <Navbar/>
      
@@ -48,8 +49,9 @@ function App() {
           <Route path="/createpost" element={<Createpost/>}></Route>
           
         </Routes>    
-   
-    </BrowserRouter>
+        
+    </BrowserRouter></>
+    
   );
 }
 

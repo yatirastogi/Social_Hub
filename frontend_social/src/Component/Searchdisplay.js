@@ -28,18 +28,17 @@ export default function Searchdisplay(props) {
 
 
 
- const PF = "http://localhost:3000/asset/"+props.profilepic;
- //console.log(PF+""+props.profilepic)
+const PF = process.env.REACT_APP_PUBLIC_FOLDER;
  // const [user, setUser] = useState({});
   //const username = useParams().username;
 
  if(!props.username)
  render(<div>Not FOUND</div>)
  else{
-   render( <>  <h5 style={{margin:"5%"}}>Showing results for : {props.username}</h5>  <div className="card" style={{width: "20rem",margin:"5%"}}>
+   render( <>   <div className="card" style={{width: "20rem",margin:"5%"}}>
 
 
-   <img style={{height:"10rem"}}className="card-img-top" src={PF} alt="Card image cap"/>
+   <img style={{height:"10rem"}}className="card-img-top" src={PF+""+props.profilepic} alt="Card image cap"/>
    <div className="card-body">
      <h5 className="card-title">{props.email}</h5>
      <p className="card-text">{props.username}</p>

@@ -6,6 +6,8 @@ import Card from "react-bootstrap/Card";
 
 
 function Show(props) {
+  
+const PF = process.env.REACT_APP_PUBLIC_FOLDER;
     const [user, setUser] = useState([]);
     const [profile, setProfile] = useState([]);
     const [email, setEmail] = useState([]);
@@ -15,6 +17,7 @@ function Show(props) {
         axios.get(`/user/`+props.username)
     .then(res => {
       setEmail(res.data.email)
+      setProfile(res.data.profilepic)
     })
     })
     const my_username=localStorage.getItem('Name');
@@ -24,7 +27,7 @@ function Show(props) {
         else{
         axios.put(`/user/`+props.username+"/"+my_username+"/unfollow")
         .then(res => {
-          console.log(res.data);
+          alert(res.data);
         })
     
         }
@@ -32,8 +35,8 @@ function Show(props) {
 
     return(
         <>
-      <div className="card" style={{width: "30rem",marginLeft:"10%",marginBottom:"2%"}}>
-  <img className="card-img-top" src="..." alt="Card image cap"/>
+      <div className="card" style={{width: "20rem",marginLeft:"10%",marginBottom:"2%"}}>
+  <img className="card-img-top" style={{height:"10rem"}}src={PF+""+profile} alt="Card image cap"/>
   <div className="card-body">
     <h5 className="card-title">{props.username}</h5>
     <p className="card-text">{email}</p>

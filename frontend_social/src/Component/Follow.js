@@ -17,7 +17,7 @@ const handleClick=(e)=>{
     //console.log(username.current.value)
     axios.put(`/user/`+his_username.current.value+"/"+my_username+"/follow")
     .then(res => {
-      console.log(res.data);
+      alert(res.data);
      // setUser(res.data.username)
     })
 

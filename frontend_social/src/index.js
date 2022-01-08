@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+
 import Create from "../src/pages/create/create"
 import Store,{ AuthContext } from "./context/AuthContext";
 ReactDOM.render(
@@ -10,6 +11,8 @@ ReactDOM.render(
     <App />
 
     </Store>
+
+  
   </React.StrictMode>,
   document.getElementById('root')
 );
